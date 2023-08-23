@@ -8,17 +8,27 @@
                 </p>
 
                 <ul class="error-messages">
-                    <li>That email is already taken</li>
+                    @error('username')
+                    <li>{{ $message }}</li>
+                    @enderror
+
+                    @error('email')
+                    <li>{{ $message }}</li>
+                    @enderror
+
+                    @if ($displayInvalidLoginAttempt)
+                        <li>email or password is invalid</li>
+                    @endif
                 </ul>
 
-                <form>
+                <form wire:submit="login">
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Email" />
+                        <input wire:model="email" class="form-control form-control-lg" type="text" placeholder="Email"/>
                     </fieldset>
                     <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="password" placeholder="Password" />
+                        <input wire:model="password" class="form-control form-control-lg" type="password" placeholder="Password"/>
                     </fieldset>
-                    <button class="btn btn-lg btn-primary pull-xs-right">Sign in</button>
+                    <button type="submit" class="btn btn-lg btn-primary pull-xs-right">Sign in</button>
                 </form>
             </div>
         </div>

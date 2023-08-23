@@ -21,11 +21,7 @@
                     @enderror
                 </ul>
 
-                @if($authenticated)
-                    <h1>asdf</h1>
-                @endif
-
-                <form wire:submit="save">
+                <form wire:submit="register">
                     <fieldset class="form-group">
                         <input wire:model.live="username" class="form-control form-control-lg" type="text" required
                                placeholder="Username"/>

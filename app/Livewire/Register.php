@@ -5,10 +5,10 @@ namespace App\Livewire;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Title;
 use Livewire\Component;
-use Symfony\Component\Routing\Annotation\Route;
 
-#[Route("Register - Conduit")]
+#[Title("Register - Conduit")]
 class Register extends Component
 {
     #[Rule('required|unique:users,username')]
@@ -20,15 +20,22 @@ class Register extends Component
     #[Rule('required')]
     public string $password = '';
 
-    public bool $authenticated = false;
+    public function mount(): void
+    {
+        if (auth()->user()?->exists()) {
+            $this->redirect('/');
+        }
+    }
 
-    public function save(): void
+    public function register(): void
     {
         $validatedRegisterForm = $this->validate();
-        $userId = (string) Str::uuid();
+        $userId = (string)Str::uuid();
 
         $user = User::create(['id' => $userId, ...$validatedRegisterForm]);
         $user->createToken('auth');
+        auth()->login($user);
+        $this->dispatch('user-authenticated')->to(Header::class);
 
         $this->redirect('/');
     }

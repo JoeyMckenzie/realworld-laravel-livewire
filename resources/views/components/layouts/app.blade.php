@@ -9,7 +9,7 @@
         @vite(['resources/css/app.css'])
     </head>
     <body>
-        <x-header />
+        @livewire('header')
         {{ $slot }}
         <x-footer />
     </body>
