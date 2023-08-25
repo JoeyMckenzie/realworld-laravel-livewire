@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
         ArticleTag::factory()
             ->count(20)
             ->create();
-            // ->each(function($articleTag) use ($tags, $createdArticles) {
-            //     $articleTag->tag_id = $tags->random(1)->pluck('id');
-            //     $articleTag->article_id = $createdArticles->random(1)->pluck('id');
-            //     $articleTag->save();
-            // });
+        // ->each(function($articleTag) use ($tags, $createdArticles) {
+        //     $articleTag->tag_id = $tags->random(1)->pluck('id');
+        //     $articleTag->article_id = $createdArticles->random(1)->pluck('id');
+        //     $articleTag->save();
+        // });
 
         foreach ($articles as $article) {
             $randomUserIds = collect($users)
