@@ -11,16 +11,25 @@ class Article extends Model
 {
     use HasFactory;
 
+    /**
+     * @return BelongsTo<User, Article>
+     */
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return HasMany<Tag>
+     */
     public function tags(): HasMany
     {
         return $this->hasMany(Tag::class);
     }
 
+    /**
+     * @return HasMany<Comment>
+     */
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);

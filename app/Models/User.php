@@ -46,6 +46,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * @return HasMany<Article>
+     */
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class);

@@ -10,6 +10,9 @@ class Comment extends Model
 {
     use HasFactory;
 
+    /**
+     * @return BelongsTo<Article, Comment>
+     */
     public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class);

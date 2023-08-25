@@ -10,6 +10,9 @@ class ArticleTag extends Model
 {
     use HasFactory;
 
+    /**
+     * @return BelongsTo<Article, ArticleTag>
+     */
     public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class);
