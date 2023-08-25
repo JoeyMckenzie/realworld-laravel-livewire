@@ -52,7 +52,8 @@
         ],
         "fmt": "./vendor/bin/pint",
         "prepare": "git config core.hookspath .githooks",
-        "lint": "./vendor/bin/phpstan analyse --memory-limit 1G"
+        "lint": "./vendor/bin/phpstan analyse --memory-limit 128M",
+        "test": "./vendor/bin/pest"
     },
     "extra": {
         "laravel": {
