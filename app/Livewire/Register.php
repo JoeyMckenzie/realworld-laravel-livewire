@@ -3,12 +3,11 @@
 namespace App\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title("Register - Conduit")]
+#[Title('Register - Conduit')]
 class Register extends Component
 {
     #[Rule('required|unique:users,username')]
@@ -30,9 +29,8 @@ class Register extends Component
     public function register(): void
     {
         $validatedRegisterForm = $this->validate();
-        $userId = (string)Str::uuid();
 
-        $user = User::create(['id' => $userId, ...$validatedRegisterForm]);
+        $user = User::create($validatedRegisterForm);
         $user->createToken('auth');
         auth()->login($user);
         $this->dispatch('user-authenticated')->to(Header::class);

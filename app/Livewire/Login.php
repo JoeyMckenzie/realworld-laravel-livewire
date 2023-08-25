@@ -6,7 +6,7 @@ use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title("Login - Conduit")]
+#[Title('Login - Conduit')]
 class Login extends Component
 {
     #[Rule('required|email')]
@@ -29,13 +29,10 @@ class Login extends Component
         $this->displayInvalidLoginAttempt = false;
         $validatedLoginForm = $this->validate();
 
-        if (auth()->attempt($validatedLoginForm))
-        {
+        if (auth()->attempt($validatedLoginForm)) {
             $this->dispatch('user-authenticated')->to(Header::class);
             $this->redirect('/');
-        }
-        else
-        {
+        } else {
             $this->displayInvalidLoginAttempt = true;
         }
     }
