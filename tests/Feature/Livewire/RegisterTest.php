@@ -2,17 +2,16 @@
 
 namespace Tests\Feature\Livewire;
 
-use App\Livewire\Login;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Livewire\Register;
 use Livewire\Livewire;
 use Tests\TestCase;
 
-class CreatePostTest extends TestCase
+class RegisterTest extends TestCase
 {
     /** @test */
     public function renders_successfully()
     {
-        Livewire::test(Login::class)
+        Livewire::test(Register::class)
             ->assertStatus(200);
     }
 }

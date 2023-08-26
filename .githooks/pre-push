@@ -1,3 +1,4 @@
 #!/bin/sh
 
 composer test
+composer types
