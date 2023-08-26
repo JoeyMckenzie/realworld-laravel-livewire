@@ -22,6 +22,7 @@
         "nunomaduro/larastan": "^2.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest-plugin-type-coverage": "v2.1.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
@@ -53,7 +54,7 @@
         "fmt": "./vendor/bin/pint",
         "prepare": "git config core.hookspath .githooks",
         "lint": "./vendor/bin/phpstan analyse --memory-limit 128M",
-        "test": "./vendor/bin/pest"
+        "test": "./vendor/bin/pest --type-coverage --min=100"
     },
     "extra": {
         "laravel": {
@@ -69,6 +70,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
