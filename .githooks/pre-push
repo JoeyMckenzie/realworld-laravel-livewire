@@ -2,4 +2,3 @@
 
 composer test
 composer types
-artisan dusk
