@@ -17,7 +17,7 @@ describe('login', function () {
         User::create([
             'username' => 'user1',
             'email' => 'user1@gmail.com',
-            'password' => 'password'
+            'password' => 'password',
         ]);
 
         expect(User::count())->toBe(1);
