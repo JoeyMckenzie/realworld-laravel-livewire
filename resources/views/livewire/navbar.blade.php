@@ -1,3 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+use function Livewire\Volt\{state, mount, on};
+
+state(['username' => '']);
+
+mount(fn() => $this->setUsername());
+
+on(['user-authenticated' => fn() => $this->setUsername()]);
+
+$setUsername = function () {
+    $user = auth()->user();
+
+    if (isset($user)) {
+        $this->username = $user->username;
+        $this->image = $user->image;
+    }
+};
+
+$logout = function () {
+    auth()->logout();
+    $this->redirect('/');
+};
+?>
+
 <nav class="navbar navbar-light">
     <div class="container">
         <a class="navbar-brand" href="/">conduit</a>
@@ -7,7 +34,7 @@
                 <a class="{{ Route::is('') ? 'nav-link active' : 'nav-link' }}" wire:navigate href="/">Home</a>
             </li>
 
-            @if (isset($username))
+            @if (isset($username) && $username !== '')
                 <li class="nav-item">
                     <a class="nav-link" href="/editor"> <i class="ion-compose"></i>&nbsp;New Article </a>
                 </li>
@@ -25,12 +52,15 @@
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="{{ Route::is('*login*') ? 'nav-link active' : 'nav-link' }}" wire:navigate href="/login">Sign in</a>
+                    <a class="{{ Route::is('*login*') ? 'nav-link active' : 'nav-link' }}" wire:navigate href="/login">Sign
+                        in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="{{ Route::is('register*') ? 'nav-link active' : 'nav-link' }}" wire:navigate href="/register">Sign up</a>
+                    <a class="{{ Route::is('register*') ? 'nav-link active' : 'nav-link' }}" wire:navigate
+                       href="/register">Sign up</a>
                 </li>
             @endif
         </ul>
     </div>
 </nav>
+
