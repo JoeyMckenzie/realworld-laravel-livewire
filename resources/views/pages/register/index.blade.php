@@ -15,7 +15,7 @@ name('register.index');
                     <p class="text-xs-center">
                         <a wire:navigate href="{{ route('login.index') }}">Have an account?</a>
                     </p>
-                    <livewire:auth-form :includeUsername="false"/>
+                    <livewire:auth-form :includeUsername="true"/>
                 </div>
             </div>
         </div>
