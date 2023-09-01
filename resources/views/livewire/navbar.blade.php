@@ -27,7 +27,7 @@ $logout = function () {
 
 <nav class="navbar navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="/">conduit</a>
+        <a class="navbar-brand" wire:navigate href="{{ route('index') }}">conduit</a>
         <ul class="nav navbar-nav pull-xs-right">
             <li class="nav-item">
                 <!-- Add "active" class when you're on that page" -->
@@ -57,7 +57,7 @@ $logout = function () {
                 </li>
                 <li class="nav-item">
                     <a class="{{ Route::is('register*') ? 'nav-link active' : 'nav-link' }}" wire:navigate
-                       href="/register">Sign up</a>
+                       href="{{ route('register.index') }}">Sign up</a>
                 </li>
             @endif
         </ul>

@@ -1,3 +1,11 @@
+<?php
+
+use function Laravel\Folio\{name};
+
+name('index');
+
+?>
+
 <x-layouts.app>
     <div class="home-page">
         <div class="banner">
