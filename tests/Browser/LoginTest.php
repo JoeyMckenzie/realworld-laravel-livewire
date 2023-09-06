@@ -16,7 +16,7 @@ class LoginTest extends DuskTestCase
     public function test_displays_sign_in_in_header(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
+            $browser->visit('/login')
                 ->assertSee('Sign in');
         });
     }

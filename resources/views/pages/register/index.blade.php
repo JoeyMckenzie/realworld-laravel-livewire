@@ -1,12 +1,15 @@
 <?php
 
-use function Laravel\Folio\{name};
+use App\Http\Middleware\RedirectIfAuthenticated;
+use function Laravel\Folio\{middleware, name};
+
+middleware([RedirectIfAuthenticated::class]);
 
 name('register.index');
 
 ?>
 
-<x-layouts.app>
+<x-layouts.app title="Register">
     <div class="auth-page">
         <div class="container page">
             <div class="row">

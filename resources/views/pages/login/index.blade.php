@@ -1,6 +1,9 @@
 <?php
 
-use function Laravel\Folio\{name};
+use App\Http\Middleware\RedirectIfAuthenticated;
+use function Laravel\Folio\{middleware, name};
+
+middleware([RedirectIfAuthenticated::class]);
 
 name('login.index');
 
